@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Consulta de Clima</title>
+</head>
+<body>
+    <h2>Consulta de Clima</h2>
+    <form method="post">
+        <label for="lugar">Ingrese el nombre del lugar que desea consultar:</label><br>
+        <input type="text" id="lugar" name="lugar"><br><br>
+        <input type="submit" value="Consultar">
+    </form>
+
+    {% if data %}
+        {% if 'error' in data %}
+            <p>{{ data.error }}</p>
+        {% else %}
+            <p>Temperatura en {{ data.lugar }}, {{ data.pais }}: {{ data.temperatura|round(2) }}°C</p>
+            <p>Condiciones climáticas en {{ data.lugar }}, {{ data.pais }}: {{ data.condiciones_climaticas }}</p>
+        {% endif %}
+    {% endif %}
+</body>
+</html>
